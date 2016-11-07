@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL marlin devices
+# This file includes all definitions that apply to ALL pme devices
 #
 # Everything in this directory will become public
 
@@ -42,37 +42,37 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.path_cache_size=32
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.rc:root/init.marlin.rc \
-    device/google/marlin/init.common.usb.rc:root/init.marlin.usb.rc \
-    device/google/marlin/fstab.common:root/fstab.marlin \
-    device/google/marlin/ueventd.common.rc:root/ueventd.marlin.rc \
-    device/google/marlin/init.recovery.common.rc:root/init.recovery.marlin.rc
+    device/google/pme/init.common.rc:root/init.pme.rc \
+    device/google/pme/init.common.usb.rc:root/init.pme.usb.rc \
+    device/google/pme/fstab.common:root/fstab.pme \
+    device/google/pme/ueventd.common.rc:root/ueventd.pme.rc \
+    device/google/pme/init.recovery.common.rc:root/init.recovery.pme.rc
 
 # Sensor hub init script
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.nanohub.rc:root/init.marlin.nanohub.rc
+    device/google/pme/init.common.nanohub.rc:root/init.pme.nanohub.rc
 
 # Sensor packages
 PRODUCT_PACKAGES += \
-    sensors.marlin \
-    activity_recognition.marlin
+    sensors.pme \
+    activity_recognition.pme
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.marlin
+    nfc_nci.pme
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-nxp.marlin.conf:system/etc/libnfc-nxp.conf
+    device/google/pme/nfc/libnfc-nxp.pme.conf:system/etc/libnfc-nxp.conf
 
 # Led packages
 PRODUCT_PACKAGES += \
-    lights.marlin
+    lights.pme
 
 # Thermal packages
 PRODUCT_PACKAGES += \
-    thermal.marlin
+    thermal.pme
 
 # VR packages
 PRODUCT_PACKAGES += \
-    vr.marlin
+    vr.pme
 

@@ -55,12 +55,12 @@ TARGET_USES_QCOM_MM_AUDIO := true
 
 -include $(QCPATH)/common/msm8996/BoardConfigVendor.mk
 
-BOARD_HAL_STATIC_LIBRARIES := libdumpstate.marlin
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.pme
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_USES_WIPOWER := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/marlin/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/pme/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAS_QCA_BT_ROME := true
 WCNSS_FILTER_USES_SIBS := true
@@ -97,18 +97,18 @@ ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCOM_BSP := true
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=marlin user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=pme user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
 
 BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware firmware/radio persist
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
 
-BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy
+BOARD_SEPOLICY_DIRS += device/google/pme/sepolicy
 ifneq ($(filter marlin marlinf, $(TARGET_PRODUCT)),)
-BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
+BOARD_SEPOLICY_DIRS += device/google/pme/sepolicy/verizon
 endif
-BOARD_SECCOMP_POLICY += device/google/marlin/seccomp
+BOARD_SECCOMP_POLICY += device/google/pme/seccomp
 
-BOARD_EGL_CFG := device/google/marlin/egl.cfg
+BOARD_EGL_CFG := device/google/pme/egl.cfg
 
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -186,12 +186,12 @@ TARGET_USE_MDTP := true
 # Use prebuilt APN lib from Verizon Wireless
 TARGET_USE_VERIZON_APN_LIB_PREBUILT := true
 
-TARGET_BOARD_KERNEL_HEADERS := device/google/marlin/kernel-headers
+TARGET_BOARD_KERNEL_HEADERS := device/google/pme/kernel-headers
 
 # Install odex files into the other system image
 BOARD_USES_SYSTEM_OTHER_ODEX := true
 
--include vendor/google_devices/marlin/BoardConfigVendor.mk
+-include vendor/google_devices/pme/BoardConfigVendor.mk
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
 
