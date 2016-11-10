@@ -40,9 +40,9 @@ PRODUCT_COPY_FILES += \
     device/google/marlin/synaptics_dsxv26.idc:system/usr/idc/synaptics_dsxv26.idc
 
 # copy customized media_profiles and media_codecs xmls for msm8996
-PRODUCT_COPY_FILES += device/google/marlin/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/google/marlin/media_codecs.xml:system/etc/media_codecs.xml \
-                      device/google/marlin/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/google/pme/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/google/pme/media_codecs.xml:system/etc/media_codecs.xml \
+                      device/google/pme/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -50,7 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/google/marlin/common/common64.mk)
+$(call inherit-product, device/google/pme/common/common64.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -77,18 +77,18 @@ PRODUCT_PACKAGES += fs_config_files \
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/google/marlin/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
-    device/google/marlin/audio_effects.conf:system/etc/audio_effects.conf \
-    device/google/marlin/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/google/marlin/mixer_paths_tasha_t50.xml:system/etc/mixer_paths_tasha_t50.xml \
-    device/google/marlin/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
-    device/google/marlin/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/google/marlin/sound_trigger_mixer_paths_tasha_t50.xml:system/etc/sound_trigger_mixer_paths_tasha_t50.xml \
-    device/google/marlin/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    device/google/marlin/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/google/marlin/audio_platform_info_tasha_t50.xml:system/etc/audio_platform_info_tasha_t50.xml \
-    device/google/marlin/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    device/google/marlin/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
+    device/google/pme/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    device/google/pme/audio_effects.conf:system/etc/audio_effects.conf \
+    device/google/pme/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/google/pme/mixer_paths_tasha_t50.xml:system/etc/mixer_paths_tasha_t50.xml \
+    device/google/pme/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    device/google/pme/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/google/pme/sound_trigger_mixer_paths_tasha_t50.xml:system/etc/sound_trigger_mixer_paths_tasha_t50.xml \
+    device/google/pme/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    device/google/pme/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/google/pme/audio_platform_info_tasha_t50.xml:system/etc/audio_platform_info_tasha_t50.xml \
+    device/google/pme/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/google/pme/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
@@ -116,10 +116,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf     \
-    device/google/marlin/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf     \
-    device/google/marlin/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/google/marlin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    device/google/pme/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf     \
+    device/google/pme/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf     \
+    device/google/pme/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/google/pme/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
@@ -149,7 +149,7 @@ PRODUCT_PACKAGES += \
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/google/pme/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 #ANT+ stack
 PRODUCT_PACKAGES += \
@@ -176,7 +176,7 @@ PRODUCT_COPY_FILES += \
 
 # For SPN display
 PRODUCT_COPY_FILES += \
-    device/google/marlin/spn-conf.xml:system/etc/spn-conf.xml
+    device/google/pme/spn-conf.xml:system/etc/spn-conf.xml
 
 # Common sensor packages
 TARGET_USES_NANOHUB_SENSORHAL := true
@@ -195,7 +195,7 @@ PRODUCT_PACKAGES += \
 endif
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/sec_config:system/etc/sec_config
+    device/google/pme/sec_config:system/etc/sec_config
 
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
@@ -205,15 +205,15 @@ PRODUCT_COPY_FILES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+    device/google/pme/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # init launched script
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh \
-    device/google/marlin/init.radio.sh:system/bin/init.radio.sh \
-    device/google/marlin/init.power.sh:system/bin/init.power.sh \
-    device/google/marlin/init.mid.sh:system/bin/init.mid.sh \
-    device/google/marlin/init.foreground.sh:system/bin/init.foreground.sh
+    device/google/pme/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh \
+    device/google/pme/init.radio.sh:system/bin/init.radio.sh \
+    device/google/pme/init.power.sh:system/bin/init.power.sh \
+    device/google/pme/init.mid.sh:system/bin/init.mid.sh \
+    device/google/pme/init.foreground.sh:system/bin/init.foreground.sh
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -285,14 +285,14 @@ PRODUCT_COPY_FILES += \
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.userdebug:root/init.common.diag.rc
+    device/google/pme/init.common.diag.rc.userdebug:root/init.common.diag.rc
 
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.enable_ramdumps=1
 else
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.user:root/init.common.diag.rc
+    device/google/pme/init.common.diag.rc.user:root/init.common.diag.rc
 endif
 
 # Subsystem silent restart
