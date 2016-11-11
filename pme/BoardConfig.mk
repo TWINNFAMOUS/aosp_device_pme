@@ -172,14 +172,6 @@ TARGET_KERNEL_APPEND_DTB := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := false
 
-#Add NON-HLOS files for ota upgrade
-ADD_RADIO_FILES := true
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
-#TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
-
-#Add support for firmare upgrade on 8996
-HAVE_SYNAPTICS_DSX_FW_UPGRADE := true
-
 # Enable MDTP (Mobile Device Theft Protection)
 TARGET_USE_MDTP := true
 
