@@ -300,7 +300,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/thermal-engine-marlin.conf:system/etc/thermal-engine.conf
+    device/google/pme/thermal-engine-pme.conf:system/etc/thermal-engine.conf
 
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
@@ -324,15 +324,6 @@ AB_OTA_UPDATER := true
 PRODUCT_PACKAGES += \
     update_engine \
     update_verifier
-
-# Enable update engine sideloading by including the static version of the
-# boot_control HAL and its dependencies.
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.msm8996 \
-    librecovery_updater_msm \
-    libsparse_static
-PRODUCT_PACKAGES += \
-    update_engine_sideload
 
 # Tell the system to enable copying odexes from other partition.
 PRODUCT_PACKAGES += \
