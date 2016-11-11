@@ -300,7 +300,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/thermal-engine-marlin.conf:system/etc/thermal-engine.conf
+    device/google/pme/thermal-engine-marlin.conf:system/etc/thermal-engine.conf
 
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
@@ -343,7 +343,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Script that copies preloads directory from system_other to data partition
 PRODUCT_COPY_FILES += \
-    device/google/marlin/preloads_copy.sh:system/bin/preloads_copy.sh
+    device/google/pme/preloads_copy.sh:system/bin/preloads_copy.sh
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -365,8 +365,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/google/marlin/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
+    device/google/pme/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/google/pme/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
 
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
