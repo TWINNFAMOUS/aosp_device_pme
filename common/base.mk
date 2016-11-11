@@ -765,9 +765,6 @@ PRODUCT_PACKAGES += \
 # Qcril configuration file
 PRODUCT_PACKAGES += qcril.db
 
-# MSM updater library
-PRODUCT_PACKAGES += librecovery_updater_msm
-
 # vcard jar
 PRODUCT_PACKAGES += vcard
 
@@ -822,11 +819,11 @@ PRODUCT_COPY_FILES += \
 
 # enable overlays to use our version of
 # source/resources etc.
-#DEVICE_PACKAGE_OVERLAYS += device/google/marlin/common/device/overlay
-#PRODUCT_PACKAGE_OVERLAYS += device/google/marlin/common/product/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/google/pme/common/device/overlay
+#PRODUCT_PACKAGE_OVERLAYS += device/google/pme/common/product/overlay
 
 # include additional build utilities
--include device/google/marlin/common/utils.mk
+-include device/google/pme/common/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk
