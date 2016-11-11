@@ -29,15 +29,15 @@ PRODUCT_SHIPPING_API_LEVEL := 24
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-DEVICE_PACKAGE_OVERLAYS += device/google/marlin/overlay
+DEVICE_PACKAGE_OVERLAYS += device/google/pme/overlay
 
 # Input device files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/google/marlin/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
-    device/google/marlin/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl \
-    device/google/marlin/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc \
-    device/google/marlin/synaptics_dsxv26.idc:system/usr/idc/synaptics_dsxv26.idc
+    device/google/pme/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/google/pme/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
+    device/google/pme/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl \
+    device/google/pme/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc \
+    device/google/pme/synaptics_dsxv26.idc:system/usr/idc/synaptics_dsxv26.idc
 
 # copy customized media_profiles and media_codecs xmls for msm8996
 PRODUCT_COPY_FILES += device/google/pme/media_profiles.xml:system/etc/media_profiles.xml \
@@ -398,15 +398,15 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := \
-    device/google/marlin/recovery.wipe.common
+    device/google/pme/recovery.wipe.common
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gps.conf:system/etc/gps.conf
+    device/google/pme/gps.conf:system/etc/gps.conf
 
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
-    device/google/marlin/default-permissions.xml:system/etc/default-permissions/default-permissions.xml
+    device/google/pme/default-permissions.xml:system/etc/default-permissions/default-permissions.xml
 
 # A/B OTA dexopt package
 PRODUCT_PACKAGES += otapreopt_script
