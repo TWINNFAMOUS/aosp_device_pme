@@ -18,7 +18,7 @@
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
 # Provide meaningful APN configuration
-PRODUCT_COPY_FILES := device/google/pme/apns-full-conf.xml:system/etc/apns-conf.xml
+PRODUCT_COPY_FILES := device/htc/pme/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -28,13 +28,14 @@ PRODUCT_NAME := aosp_pme
 PRODUCT_DEVICE := pme
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on msm8996
-PRODUCT_MANUFACTURER := google
-PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_MANUFACTURER := htc
 
-PRODUCT_COPY_FILES += device/google/pme/fstab.aosp_common:root/fstab.pme
+#PRODUCT_RESTRICT_VENDOR_FILES := true
 
-$(call inherit-product, device/google/pme/device-pme.mk)
-$(call inherit-product-if-exists, vendor/google_devices/pme/device-vendor-pme.mk)
+PRODUCT_COPY_FILES += device/htc/pme/fstab.aosp_common:root/fstab.pme
+
+$(call inherit-product, device/htc/pme/device-pme.mk)
+$(call inherit-product-if-exists, vendor/htc/pme/pme-vendor.mk)
 
 PRODUCT_PACKAGES += \
     Launcher3
