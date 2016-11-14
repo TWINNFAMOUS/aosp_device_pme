@@ -19,13 +19,13 @@
 # Everything in this directory will become public
 
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := 640dpi
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
--include device/google/pme/device-common.mk
+-include device/htc/pme/device-common.mk
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/pme/pme/overlay
+DEVICE_PACKAGE_OVERLAYS += device/htc/pme/pme/overlay
 
 # display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -42,15 +42,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.path_cache_size=32
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/init.common.rc:root/init.pme.rc \
-    device/google/pme/init.common.usb.rc:root/init.pme.usb.rc \
-    device/google/pme/fstab.common:root/fstab.pme \
-    device/google/pme/ueventd.common.rc:root/ueventd.pme.rc \
-    device/google/pme/init.recovery.common.rc:root/init.recovery.pme.rc
+    device/htc/pme/init.common.rc:root/init.pme.rc \
+    device/htc/pme/init.common.usb.rc:root/init.pme.usb.rc \
+    device/htc/pme/fstab.common:root/fstab.pme \
+    device/htc/pme/ueventd.common.rc:root/ueventd.pme.rc \
+    device/htc/pme/init.recovery.common.rc:root/init.recovery.pme.rc
 
 # Sensor hub init script
 PRODUCT_COPY_FILES += \
-    device/google/pme/init.common.nanohub.rc:root/init.pme.nanohub.rc
+    device/htc/pme/init.common.nanohub.rc:root/init.pme.nanohub.rc
 
 # Sensor packages
 PRODUCT_PACKAGES += \
@@ -62,7 +62,7 @@ PRODUCT_PACKAGES += \
     nfc_nci.pme
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/nfc/libnfc-nxp.pme.conf:system/etc/libnfc-nxp.conf
+    device/htc/pme/nfc/libnfc-nxp.pme.conf:system/etc/libnfc-nxp.conf
 
 # Led packages
 PRODUCT_PACKAGES += \
