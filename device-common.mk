@@ -18,31 +18,32 @@
 #
 # Everything in this directory will become public
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/marlin-kernel/Image.gz-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+# removing and will add in kernel later
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+#    LOCAL_KERNEL := device/google/marlin-kernel/Image.gz-dtb
+#else
+#LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+#endif
 
 PRODUCT_SHIPPING_API_LEVEL := 24
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_KERNEL):kernel
 
-DEVICE_PACKAGE_OVERLAYS += device/google/pme/overlay
+DEVICE_PACKAGE_OVERLAYS += device/htc/pme/overlay
 
 # Input device files
 PRODUCT_COPY_FILES += \
-    device/google/pme/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/google/pme/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
-    device/google/pme/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl \
-    device/google/pme/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc \
-    device/google/pme/synaptics_dsxv26.idc:system/usr/idc/synaptics_dsxv26.idc
+    device/htc/pme/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/htc/pme/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
+    device/htc/pme/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl \
+    device/htc/pme/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc \
+    device/htc/pme/synaptics_dsxv26.idc:system/usr/idc/synaptics_dsxv26.idc
 
 # copy customized media_profiles and media_codecs xmls for msm8996
-PRODUCT_COPY_FILES += device/google/pme/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/google/pme/media_codecs.xml:system/etc/media_codecs.xml \
-                      device/google/pme/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/htc/pme/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/htc/pme/media_codecs.xml:system/etc/media_codecs.xml \
+                      device/htc/pme/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -50,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/google/pme/common/common64.mk)
+$(call inherit-product, device/htc/pme/common/common64.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -77,18 +78,18 @@ PRODUCT_PACKAGES += fs_config_files \
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/google/pme/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
-    device/google/pme/audio_effects.conf:system/etc/audio_effects.conf \
-    device/google/pme/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/google/pme/mixer_paths_tasha_t50.xml:system/etc/mixer_paths_tasha_t50.xml \
-    device/google/pme/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
-    device/google/pme/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/google/pme/sound_trigger_mixer_paths_tasha_t50.xml:system/etc/sound_trigger_mixer_paths_tasha_t50.xml \
-    device/google/pme/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    device/google/pme/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/google/pme/audio_platform_info_tasha_t50.xml:system/etc/audio_platform_info_tasha_t50.xml \
-    device/google/pme/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    device/google/pme/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
+    device/htc/pme/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    device/htc/pme/audio_effects.conf:system/etc/audio_effects.conf \
+    device/htc/pme/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/htc/pme/mixer_paths_tasha_t50.xml:system/etc/mixer_paths_tasha_t50.xml \
+    device/htc/pme/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+    device/htc/pme/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/htc/pme/sound_trigger_mixer_paths_tasha_t50.xml:system/etc/sound_trigger_mixer_paths_tasha_t50.xml \
+    device/htc/pme/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    device/htc/pme/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/htc/pme/audio_platform_info_tasha_t50.xml:system/etc/audio_platform_info_tasha_t50.xml \
+    device/htc/pme/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/htc/pme/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
@@ -116,10 +117,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
-    device/google/pme/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf     \
-    device/google/pme/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf     \
-    device/google/pme/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/google/pme/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    device/htc/pme/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf     \
+    device/htc/pme/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf     \
+    device/htc/pme/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/htc/pme/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
@@ -149,7 +150,7 @@ PRODUCT_PACKAGES += \
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    device/google/pme/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    device/htc/pme/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 #ANT+ stack
 PRODUCT_PACKAGES += \
@@ -176,7 +177,7 @@ PRODUCT_COPY_FILES += \
 
 # For SPN display
 PRODUCT_COPY_FILES += \
-    device/google/pme/spn-conf.xml:system/etc/spn-conf.xml
+    device/htc/pme/spn-conf.xml:system/etc/spn-conf.xml
 
 # Common sensor packages
 TARGET_USES_NANOHUB_SENSORHAL := true
@@ -195,7 +196,7 @@ PRODUCT_PACKAGES += \
 endif
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/sec_config:system/etc/sec_config
+    device/htc/pme/sec_config:system/etc/sec_config
 
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
@@ -205,15 +206,15 @@ PRODUCT_COPY_FILES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/google/pme/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+    device/htc/pme/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # init launched script
 PRODUCT_COPY_FILES += \
-    device/google/pme/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh \
-    device/google/pme/init.radio.sh:system/bin/init.radio.sh \
-    device/google/pme/init.power.sh:system/bin/init.power.sh \
-    device/google/pme/init.mid.sh:system/bin/init.mid.sh \
-    device/google/pme/init.foreground.sh:system/bin/init.foreground.sh
+    device/htc/pme/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh \
+    device/htc/pme/init.radio.sh:system/bin/init.radio.sh \
+    device/htc/pme/init.power.sh:system/bin/init.power.sh \
+    device/htc/pme/init.mid.sh:system/bin/init.mid.sh \
+    device/htc/pme/init.foreground.sh:system/bin/init.foreground.sh
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -265,8 +266,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=10 \
     telephony.lteOnCdmaDevice=1
 
-PRODUCT_AAPT_CONFIG += xlarge large
-PRODUCT_CHARACTERISTICS := nosdcard
+#PRODUCT_AAPT_CONFIG += xlarge large
+#PRODUCT_CHARACTERISTICS := nosdcard
 
 # Enable camera EIS
 # eis.enable: enables electronic image stabilization
@@ -285,14 +286,14 @@ PRODUCT_COPY_FILES += \
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
-    device/google/pme/init.common.diag.rc.userdebug:root/init.common.diag.rc
+    device/htc/pme/init.common.diag.rc.userdebug:root/init.common.diag.rc
 
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.enable_ramdumps=1
 else
 PRODUCT_COPY_FILES += \
-    device/google/pme/init.common.diag.rc.user:root/init.common.diag.rc
+    device/htc/pme/init.common.diag.rc.user:root/init.common.diag.rc
 endif
 
 # Subsystem silent restart
@@ -300,7 +301,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/thermal-engine-pme.conf:system/etc/thermal-engine.conf
+    device/htc/pme/thermal-engine-pme.conf:system/etc/thermal-engine.conf
 
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
@@ -320,10 +321,10 @@ PRODUCT_PACKAGES += \
     gatekeeper.msm8996
 
 # Use the A/B updater.
-AB_OTA_UPDATER := true
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_verifier
+#AB_OTA_UPDATER := true
+#PRODUCT_PACKAGES += \
+#    update_engine \
+#    update_verifier
 
 # Tell the system to enable copying odexes from other partition.
 PRODUCT_PACKAGES += \
@@ -334,7 +335,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Script that copies preloads directory from system_other to data partition
 PRODUCT_COPY_FILES += \
-    device/google/pme/preloads_copy.sh:system/bin/preloads_copy.sh
+    device/htc/pme/preloads_copy.sh:system/bin/preloads_copy.sh
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -342,9 +343,9 @@ PRODUCT_PACKAGES_DEBUG += \
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
 # more partitions to this list for the bootloader and radio.
-AB_OTA_PARTITIONS += \
-    boot \
-    system
+#AB_OTA_PARTITIONS += \
+#    boot \
+#    system
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -356,8 +357,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
 PRODUCT_COPY_FILES += \
-    device/google/pme/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/google/pme/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
+    device/htc/pme/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/htc/pme/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/firmware/libpn551_fw.so
 
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
@@ -383,35 +384,35 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.oem_unlock_supported=1
 
 # Setup dm-verity configs
-PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
-PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/bootdevice/by-name/vendor
-$(call inherit-product, build/target/product/verity.mk)
+#PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+#PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/bootdevice/by-name/vendor
+#$(call inherit-product, build/target/product/verity.mk)
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := \
-    device/google/pme/recovery.wipe.common
+#TARGET_RECOVERY_WIPE := \
+#    device/htc/pme/recovery.wipe.common
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
-    device/google/pme/gps.conf:system/etc/gps.conf
+    device/htc/pme/gps.conf:system/etc/gps.conf
 
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
-    device/google/pme/default-permissions.xml:system/etc/default-permissions/default-permissions.xml
+    device/htc/pme/default-permissions.xml:system/etc/default-permissions/default-permissions.xml
 
 # A/B OTA dexopt package
-PRODUCT_PACKAGES += otapreopt_script
+#PRODUCT_PACKAGES += otapreopt_script
 
 # A/B OTA dexopt update_engine hookup
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
+#AB_OTA_POSTINSTALL_CONFIG += \
+#    RUN_POSTINSTALL_system=true \
+#    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+#    FILESYSTEM_TYPE_system=ext4 \
+#    POSTINSTALL_OPTIONAL_system=true
 
 #Reduce cost of scrypt for FBE CE decryption
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.scrypt_params=13:3:1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.crypto.scrypt_params=13:3:1
 
 # Add minidebug info to the system server to support diagnosing native crashes.
 ifneq (,$(filter user userdebug, $(TARGET_BUILD_VARIANT)))
@@ -442,5 +443,5 @@ endif
 # b/30022738
 # Work around janky screenrecord performance by disabling hardware composer
 # virtual displays
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.disable_hwc_vds=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    debug.sf.disable_hwc_vds=1
